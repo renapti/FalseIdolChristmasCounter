@@ -3,17 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- DM Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,400;9..40,700&display=swap" rel="stylesheet">
+    
     <title>False Idol until Christmas!</title>
+    
+    <!-- Script -->
     <script src="./js/script.js"></script>
 
-    <style>
-        .center {
-            text-align: center;
-            justify-content: center;
-        }
-    </style>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/stylesheet.css">
 </head>
-<body>
-    <p class="center">INITIAL COMMIT TEST</p>
+
+<body onload="init()" style="padding: 0; margin: 0; background-color: #FFF2D7; height: 100%; overflow: hidden;">
+    
+    <a href="https://youtu.be/kJNCdaKPZg4" target="_blank" class="https://youtu.be/kJNCdaKPZg4"><img src="./src/cover.png" alt="False Idol Cover" class="cover"></a>
+
+    <span style="width: 100%; height: 50%; background-color: var(--dark-fi); position: absolute;"></span>
+
+    <div class="absolute label" id="upper-label"><p>We are currently</p></div>
+    <div class="absolute label" id="lower-label"><p>FALSE IDOL PLAYS</p></div>
+    <div class="absolute label" id="lowerer-label"><p>away from Christmas!</p></div>
+
+    <div>
+        <span class="absolute timer" id="timer-ticker"></span>
+    </div>
 </body>
 </html>
