@@ -1,5 +1,7 @@
 /* Classes */
 
+
+
 :root {
     --bright-fi: #FFF2D7;
     --bright-fi-glow: #FFF2D7B0;
@@ -9,6 +11,7 @@
 
 * {
     user-select: none;
+    transition: all 0.3s cubic-bezier(.15,.43,.62,1);
 }
 
 .absolute {
@@ -18,18 +21,16 @@
 
 .cover {
     position: absolute;
-    z-index: 1;
+    z-index: -1;
 
     resize: both;
     width: 40vh;
 
-    left: 20vw;
+    left: calc(10vw + 40px);
     top: 50%;
     transform: translateY(-50%);
 
     border-radius: 8px;
-
-    transition: all 0.3s cubic-bezier(.15,.43,.62,1);
 }
 
 .cover:hover {
@@ -48,7 +49,7 @@
     font-weight: bold;
     margin: 0;
 
-    top: 50%;
+    top: 48%;
     left: 45%;
     transform: translateY(-50%);
 
