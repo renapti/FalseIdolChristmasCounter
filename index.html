@@ -19,18 +19,36 @@
     <link rel="stylesheet" href="./css/stylesheet.css">
 </head>
 
-<body onload="init()" style="padding: 0; margin: 0; background-color: #FFF2D7; height: 100%; overflow: hidden;">
+<body onload="init()">
     
-    <a href="https://youtu.be/kJNCdaKPZg4" target="_blank" class="https://youtu.be/kJNCdaKPZg4"><img src="./src/cover.png" alt="False Idol Cover" class="cover"></a>
+    <span id="counter-body" class="trans-opacity">
+        <!-- Cover -->
+        <a href="https://youtu.be/kJNCdaKPZg4" target="_blank"><img src="./src/cover.png" alt="False Idol Cover" class="cover transition"></a>
+        
+        <!-- Top rectangle -->
+        <span style="width: 100%; height: 60%; background-color: var(--dark-fi); position: absolute; z-index: -2;"></span>
+        
+        <div class="absolute label" id="upper-label"><p>We are currently</p></div>
+        <div class="absolute label" id="lower-label"><p>FALSE IDOL PLAYS</p></div>
+        
+        <div class="absolute label" id="lowerer-label"><p>away from Christmas!</p></div>
+        
+        <!-- Timer -->
+        <div><span class="absolute timer" id="timer-ticker"></span></div>
 
-    <span style="width: 100%; height: 60%; background-color: var(--dark-fi); position: absolute; z-index: -2;"></span>
-
-    <div class="absolute label" id="upper-label"><p>We are currently</p></div>
-    <div class="absolute label" id="lower-label"><p>FALSE IDOL PLAYS</p></div>
-    <div class="absolute label" id="lowerer-label"><p>away from Christmas!</p></div>
-
-    <div>
-        <span class="absolute timer" id="timer-ticker"></span>
-    </div>
+        <!-- Emblem and version -->
+        <div>
+            <a href="https://twitter.com/renapti" class="img-link" target="_blank"><img src="./src/Azura x16.png" alt="Azura Emblem" class="emblem"></a>
+        </div>
+        <a href="https://github.com/renapti/FalseIdolChristmasCounter" class="img-link" id="version" target="_blank">1.1</a>
+    </span>
+    
+    <span id="christmas-text" style="opacity: 0%;">
+        <div class="absolute merry-christmas">Merry Christmas!</div>
+        <div class="absolute merry-christmas" style="font-size: calc(1vw + 12px); top: 85%; color: var(--dark-fi);">no fancy animation this time around, sorry :&lt;</div>
+    </span>
+    
+    <span id="load-animation"></span>
+    
 </body>
 </html>

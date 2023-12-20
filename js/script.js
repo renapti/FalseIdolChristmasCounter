@@ -1,40 +1,72 @@
+// A single day, in milliseconds
+const dayInMillis = 1000 * 60 * 60 * 24;
+// False Idol's Length, in milliseconds
+const falseIdolLen = 274758;
+
+// New Year's day of next year
+const newYears = new Date("Jan 1 2024").setFullYear(new Date().getFullYear() + 1);
+// This or next year's Christmas
+var christmas = new Date("Dec 25 2023").setFullYear(new Date().getFullYear());
+// Finally, the current date
+var currentDate = new Date();
+
+// If it's between Christmas and New Years, set Christmas to next one
+if (currentDate > (christmas + dayInMillis) && currentDate < newYears)
+    christmas = new Date("Dec 25 2023").setFullYear(new Date().getFullYear() + 1);
+
 // Initialization Function
 function init()
 {
-    updateTimer()
-    setInterval(updateTimer, 200)
+    updateTimer(); // Call once on load
+    setInterval(updateTimer, 100); // Then, repeatedly call every 100ms
+    hideIntroAnim();
 }
 
-// This year's Christmas
-const christmas = new Date("Dec 25 2023").setFullYear(new Date().getFullYear());
+// Start the webpage load animation
+function hideIntroAnim()
+{
+    var box = document.getElementById("load-animation");
+    box.style.transform = "translateY(100%)";
+    box.style.opacity = 0.75;
+}
 
-// A single day, in milliseconds
-const dayInMillis = 60 * 60 * 24 * 1000;
-
-// Timer Update Function
+// Update the timer and page
 function updateTimer()
 {
-    // The current time
-    var currentDate = new Date(new Date().setFullYear(2023)).getTime();
+    // The current time and date
+    currentDate = new Date();
+
+    // HTML elements
+    const ticker = document.getElementById("timer-ticker");
+    const christmasText = document.getElementById("christmas-text");
 
     // False Idol Plays until Christmas
-    var playsUntilChristmas = (christmas - currentDate) / 274758; // False Idol Length in millis
+    var playsLeft = (christmas - currentDate) / falseIdolLen;
 
-    if (playsUntilChristmas < 1000)
+    // Round to 3 digits if under 100, 2 digits if under 1000, otherwise just 1 digit
+    // We need the ".xxx5" numbers to make the digits switch at the right time :)
+    // (Otherwise, there's a special case where the digits are one higher than they should be)
+
+    if (playsLeft <= 100 - .0005)
+        playsLeft = playsLeft.toFixed(3);
+
+    else if (playsLeft <= 1000 - .005)
+        playsLeft = playsLeft.toFixed(2);
+
+    else
+        playsLeft = playsLeft.toFixed(1);
+
+    // Not Christmas yet
+    if (playsLeft > 0)
     {
-        playsUntilChristmas = playsUntilChristmas.toFixed(2)
+        ticker.innerHTML = playsLeft;
+        christmasText.style.opacity = 0;
     }
-    else if (playsUntilChristmas < 100)
-    {
-        playsUntilChristmas = playsUntilChristmas.toFixed(3)
-    }
+
+    // Is Christmas!
     else
     {
-        playsUntilChristmas = playsUntilChristmas.toFixed(1)
+        ticker.innerHTML = "0";
+        christmasText.style.opacity = 1;
     }
-
-    // Is it Christmas?
-    var isChristmas = (currentDate - christmas) >= 0 && (currentDate - christmas < dayInMillis);
-
-    document.getElementById("timer-ticker").innerHTML = playsUntilChristmas;
 }
